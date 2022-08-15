@@ -3,7 +3,7 @@ import MainLayout from '../components/layouts/MainLayout'
 
 const HomePage: NextPage = () => {
   return (
-    <MainLayout>
+    <MainLayout title="All Pokemons">
       <h1>Hola Mundo</h1>
     </MainLayout>
   )

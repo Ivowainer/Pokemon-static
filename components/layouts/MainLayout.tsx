@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { Navbar } from '../ui';
 
 interface Props {
     title?: string
@@ -10,13 +11,15 @@ const MainLayout: React.FC<React.PropsWithChildren<Props>> = ({ children, title 
             <Head>
                 <title>{title || "PokemonApp"}</title>
                 <meta name="author" content="Ivo Wainer" />
-                <meta name="description" content="About the pokémon XXXX" />
-                <meta name="keywords" content="XXX, pokemon, pokedex" />
+                <meta name="description" content={`About the pokémon ${ title }`} />
+                <meta name="keywords" content={`${ title }, pokemon, pokedex`} />
             </Head>       
 
-            {/* navbar */}
+            <Navbar />
 
-            <main>
+            <main style={{
+                padding: '0px 20px'
+            }}>
                 {children}
             </main>
         </>
