@@ -23,7 +23,7 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => {
             </Card.Body>
             <Card.Footer>
               <Row justify='space-between'>
-                  <Text>{pokemon.name}</Text>
+                  <Text transform='capitalize'>{pokemon.name}</Text>
                   <Text>#{pokemon.id}</Text>
               </Row>
             </Card.Footer>
