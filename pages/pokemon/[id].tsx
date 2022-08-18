@@ -12,8 +12,12 @@ interface Props {
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
     const router = useRouter()
 
+    const onToggleFavorite = () => {
+        localStorage.setItem('favorites', `${pokemon.id}`);
+    }
+
     return (
-        <MainLayout title="Algun Pokémon">
+        <MainLayout title={`${pokemon.id} - ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`}>
             <Grid.Container css={{ marginTop: "5px" }} gap={ 2 }>
                 <Grid xs={ 12 } sm={ 4 }>
                     <Card isHoverable css={{ padding: "30px" }}>
@@ -33,7 +37,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                         <Card.Header css={{ display: "flex", justifyContent: "space-between" }}>
                             <Text h1 transform='capitalize'>{ pokemon.name }</Text>
 
-                            <Button color="gradient" ghost>Save in Favorites</Button>
+                            <Button onClick={onToggleFavorite} color="gradient" ghost>Save in Favorites</Button>
                         </Card.Header>
 
                         <Card.Body>
