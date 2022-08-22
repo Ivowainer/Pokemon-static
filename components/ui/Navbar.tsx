@@ -2,7 +2,7 @@ import { Spacer, Text, useTheme, Link } from "@nextui-org/react"
 import Image from "next/image"
 import NextLink from 'next/link'
 
-export const Navbar = () => {
+const Navbar = () => {
     const { theme } = useTheme()
 
     return (
@@ -40,3 +40,5 @@ export const Navbar = () => {
         </div>
     )
 }
+
+export default Navbar

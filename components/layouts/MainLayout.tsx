@@ -1,5 +1,5 @@
 import Head from "next/head"
-import { Navbar } from '../ui';
+import Navbar from '../ui/Navbar';
 
 interface Props {
     title?: string
