@@ -8,7 +8,7 @@ import confetti from 'canvas-confetti'
 import { pokeApi } from '../../api';
 import MainLayout from '../../components/layouts/MainLayout'
 import { Pokemon, PokemonListResponse } from '../../interfaces';
-import { localFavorites } from '../../utils';
+import { getPokemonInfo, localFavorites } from '../../utils';
 
 interface Props {
     pokemon: Pokemon
@@ -37,7 +37,7 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
     }
 
     return (
-        <MainLayout title={`${pokemon.id} - ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`}>
+        <MainLayout title={`${pokemon.id} - ${pokemon.name/* .charAt(0).toUpperCase() + pokemon.name.slice(1) */}`}>
             <Grid.Container css={{ marginTop: "5px" }} gap={ 2 }>
                 <Grid xs={ 12 } sm={ 4 }>
                     <Card isHoverable css={{ padding: "30px" }}>
@@ -113,17 +113,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const { name } = params as { name: string };
 
-    const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}`);
-
-    const pokemon = {
-        id: data.id,
-        name: data.name,
-        sprites: data.sprites,
-    }
-
     return {
       props: {
-        pokemon
+        pokemon: await getPokemonInfo( name )
       }
     }
 }

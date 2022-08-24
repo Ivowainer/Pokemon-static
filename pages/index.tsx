@@ -7,8 +7,6 @@ import PokemonCard from '../components/pokemon/PokemonCard'
 
 import { PokemonListResponse, SmallPokemon } from '../interfaces'
 
-import { Fragment } from 'react'
-
 interface Props {
   pokemons: SmallPokemon[];
 }
