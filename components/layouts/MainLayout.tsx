@@ -6,6 +6,9 @@ interface Props {
 }
 
 const MainLayout: React.FC<React.PropsWithChildren<Props>> = ({ children, title }) => {
+
+    const origin = (typeof window === 'undefined') ? '' : window.location.origin
+
     return (
         <>
             <Head>
@@ -13,6 +16,10 @@ const MainLayout: React.FC<React.PropsWithChildren<Props>> = ({ children, title 
                 <meta name="author" content="Ivo Wainer" />
                 <meta name="description" content={`About the pokémon ${ title }`} />
                 <meta name="keywords" content={`${ title }, pokemon, pokedex`} />
+
+                <meta property="og:title" content={`Information about the pokémon ${title}`} />
+                <meta property="og:description" content={`This is the page about ${title}`} />
+                <meta property="og:image" content={`${origin}/img/banner.png`} />
             </Head>       
 
             <Navbar />
